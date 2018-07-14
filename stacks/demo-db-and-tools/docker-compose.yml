@@ -1,0 +1,26 @@
+# Use root/example as user/password credentials
+version: '3.2'
+
+services:
+
+  db:
+    image: mysql:5
+    restart: always
+    environment:
+        MYSQL_DATABASE: demodb
+        MYSQL_ROOT_PASSWORD: example
+
+  tool_adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 28080:8080
+      
+  tool_phpmyadmin: 
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+        PMA_HOST: db
+    ports:
+      - 22280:80
+      

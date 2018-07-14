@@ -6,10 +6,10 @@ LABEL environment_context="DEV"
 USER root
 
 #Install our custom scripts folder
-ADD ./mybucket /var/mybucket
+COPY ./mybucket /var/mybucket
 
 #Refresh apt references
-ARG APT_GET_FORCED_DATE=20180703
+ARG APT_GET_FORCED_DATE=20180713
 RUN apt-get update
 
 #Install PHP7
@@ -48,7 +48,7 @@ ADD ./defaultwebsite /var/www/html
 WORKDIR /var/www/html
 RUN chown -R webadmin:www-data .
 
-ENV DOCKERFILE_MACHINEBUILD_VERSION "${APT_GET_FORCED_DATE}.3"
+ENV DOCKERFILE_MACHINEBUILD_VERSION "${APT_GET_FORCED_DATE}.1"
 
 
 

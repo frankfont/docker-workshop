@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+  web:
+    image: local/myubuntu18-apache-php-webserver
+    restart: always
+    ports:
+      - 11180:80
+    volumes:
+      - type: bind
+        source: ./docroot
+        target: /var/www/html
+        
+      
